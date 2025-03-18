@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+permissions:
+  id-token: write  # ✅ Required for Azure Login
+  contents: read   # Allows checking out the repo
+
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
@@ -22,9 +26,9 @@ jobs:
 
     - name: Log in to ACR
       run: |
-        az acr login --name ${{ secrets.rishiacr }}
+        az acr login --name rishiacr
 
     - name: Build and Push Docker Image
       run: |
-        docker build -t ${{ secrets.rishiacr }}.azurecr.io/myapp:latest .
-        docker push ${{ secrets.rishiacr }}.azurecr.io/myapp:latest
+        docker build -t rishiacr.azurecr.io/myapp:latest .
+        docker push rishiacr.azurecr.io/myapp:latest
