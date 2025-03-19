@@ -26,9 +26,9 @@ jobs:
 
     - name: Log in to ACR
       run: |
-        az acr login --name rishiacr
+        az acr login --name Rstudentacr
 
     - name: Build and Push Docker Image
       run: |
-        docker build -t rishiacr.azurecr.io/myapp:latest .
-        docker push rishiacr.azurecr.io/myapp:latest
+        docker build -t Rstudentacr.azurecr.io/myapp:latest .
+        docker push Rstudentacr.azurecr.io/myapp:latest
